@@ -1,0 +1,77 @@
+class OddThread extends Thread {
+    private int limit;
+
+    OddThread(int limit) {
+        this.limit = limit;
+    }
+
+    public void run() {
+        for (int i = 1; i <= limit; i++) {
+            if (i % 2 != 0) {
+                System.out.println("Odd: " + i);
+                try {
+                    Thread.sleep(100); 
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+
+class EvenThread extends Thread {
+    private int limit;
+
+    EvenThread(int limit) {
+        this.limit = limit;
+    }
+
+    public void run() {
+        for (int i = 1; i <= limit; i++) {
+            if (i % 2 == 0) {
+                System.out.println("Even: " + i);
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+
+public class OddEvenThreads {
+    public static void main(String[] args) {
+        int range = 20; 
+
+        OddThread t1 = new OddThread(range);
+        EvenThread t2 = new EvenThread(range);
+
+        t1.start();  
+        t2.start();  
+    }
+}
+
+
+OUTPUT:
+Odd: 1
+Even: 2
+Odd: 3
+Even: 4
+Odd: 5
+Even: 6
+Odd: 7
+Even: 8
+Odd: 9
+Even: 10
+Odd: 11
+Even: 12
+Odd: 13
+Even: 14
+Odd: 15
+Even: 16
+Odd: 17
+Even: 18
+Odd: 19
+Even: 20
+
